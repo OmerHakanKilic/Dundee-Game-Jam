@@ -53,14 +53,14 @@ func finish_transition():
 	var temp = current_event
 	current_event = next_event
 	next_event = temp
-	next_event.z_index = 0
-	current_event.z_index = 1
+	next_event.z_index = -2
+	current_event.z_index = -1
 	blank_next_event()
 
 var card_transitioning = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
-	var swipe_detector = get_child(4)
+	var swipe_detector = get_child(0)
 	
 	var threshold = 250.0
 	var finish_threshold = 1000.0
@@ -110,8 +110,8 @@ func setup_event_scenes():
 	current_event=event_scene.instantiate()
 	next_event = event_scene.instantiate()
 	
-	current_event.z_index = 1
-	next_event.z_index =0
+	current_event.z_index = -1
+	next_event.z_index = -2
 	
 	add_child(current_event)
 	add_child(next_event)
