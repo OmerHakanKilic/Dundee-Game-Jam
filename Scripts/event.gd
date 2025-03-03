@@ -28,5 +28,3 @@ func _process(delta):
 
 func constructor(ID:int):
 	print(" Constructed with id: "+str(ID))
-func desc() -> String:
-	return "Event 1 description"
