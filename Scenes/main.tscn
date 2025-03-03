@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://rcw1d5eslvgy"]
 
-[ext_resource type="Script" path="res://Scripts/main.gd" id="1_t8fqm"]
+[ext_resource type="Script" path="res://Scripts/game_main.gd" id="1_cl4kc"]
+[ext_resource type="Script" path="res://Scripts/swipe_detector.gd" id="2_r7q3x"]
 [ext_resource type="Texture2D" uid="uid://bk0fgmlnbxyx4" path="res://Assets/Images/icon.svg" id="2_4eopm"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_t8fqm")
+script = ExtResource("1_cl4kc")
 
 [node name="Inventory" type="VBoxContainer" parent="."]
 offset_left = 38.0
@@ -20,6 +21,9 @@ texture = ExtResource("2_4eopm")
 [node name="Slot2" type="Sprite2D" parent="Inventory"]
 position = Vector2(323, 0)
 texture = ExtResource("2_4eopm")
+
+[node name="SwipeDetector" type="Node2D" parent="."]
+script = ExtResource("2_r7q3x")
 
 [node name="Slot3" type="Sprite2D" parent="Inventory"]
 position = Vector2(451, 0)
