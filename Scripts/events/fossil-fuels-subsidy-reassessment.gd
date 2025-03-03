@@ -1,10 +1,10 @@
 extends Event
 
 func description() -> String:
-	return "PLACEHOLDER EVENT DESCRIPTION"
+	return "Critics demand a reassessment of fossil fuel subsidies on both fiscal and environmental grounds. Call for a review?"
 	
 func image() -> CompressedTexture2D:
-	return preload("res://Assets/Images/Deepwater_Horizon_offshore_drilling_unit_on_fire_2010.jpg")
+	return load("res://Assets/Images/fossil-fuels-subsidy-reassessment.png")
 
 func condition() -> bool:
 	# can read from globals to see if conditions are met
