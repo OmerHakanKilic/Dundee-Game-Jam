@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="Dundee Game jam"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://Assets/Images/icon.svg"
 
 [autoload]
 
 GlobalVariables="*res://Scripts/GlobalVariables.gd"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
 
 [editor]
 
