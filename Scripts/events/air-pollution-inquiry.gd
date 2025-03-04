@@ -9,6 +9,9 @@ func image() -> CompressedTexture2D:
 func condition() -> bool:
 	# can read from globals to see if conditions are met
 	return true
+
+func maximum_turn() -> int:
+	return GlobalVariables.midgameStart
 	
 func approve_effect():
 	GlobalVariables.popularity += 15

@@ -10,9 +10,13 @@ func condition() -> bool:
 	# can read from globals to see if conditions are met
 	return true
 	
+func maximum_turn() -> int:
+	return GlobalVariables.midgameStart
+
 func approve_effect():
 	GlobalVariables.popularity += 10
 	GlobalVariables.treasury += 5
+	GlobalVariables.flags["fossil-fuels-subsidy-reassessment"] = true
 
 func refuse_effect():
 	GlobalVariables.popularity -= 15

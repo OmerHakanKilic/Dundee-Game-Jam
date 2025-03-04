@@ -14,9 +14,18 @@ func condition() -> bool:
 	# can read from globals to see if conditions are met
 	return true
 	
+func minimum_turn() -> int:
+	return 0
+	
+func maximum_turn() -> int:
+	return 999
+	
 func weight() -> float:
 	# can read from globals to modify weight
 	return 1.0
+	
+func appear_effect():
+	pass
 	
 func approve_effect():
 	pass

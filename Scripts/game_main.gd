@@ -22,6 +22,7 @@ func _ready():
 	randomize()
 	prepare_events()
 	setup_event_scenes()
+	reset()
 	#position = get_viewport_rect().size  / 2
 
 # This function iterates all script files in res://Scripts/events and loads them into the events array
@@ -36,15 +37,28 @@ func prepare_events():
 				var evt = load("res://Scripts/events/" + file_name).new()
 				events.append(evt)
 				file_name = dir.get_next()
+				
+func reset():
+	GlobalVariables.treasury = 30
+	GlobalVariables.popularity = 40
+	GlobalVariables.climate = 30
+	GlobalVariables.leadership = 30
+	GlobalVariables.currentTurn = 0
+	GlobalVariables.flags = {}
+	GlobalVariables.shouldReset = false
+	current_event = events[0]
+	current_event_scene.apply_event(current_event)
+	already_triggered = {}
+	already_triggered[current_event] = true
 
 func begin_transition():
 	card_transitioning = true
 	clamp_vars()
 	next_event = sample_event()
-	setup_event(next_event_scene, next_event)
+	next_event.appear_effect()
+	next_event_scene.apply_event(next_event)
 	already_triggered[next_event] = true
-	
-	pass
+	GlobalVariables.currentTurn += 1
 
 func clamp_vars():
 	GlobalVariables.treasury = clamp(GlobalVariables.treasury,0,100)
@@ -68,13 +82,16 @@ func finish_transition():
 	current_event_scene.rotation = 0
 	next_event_scene.rotation = 0
 	blank_next_event()
+	if GlobalVariables.shouldReset == true:		
+		reset()
+		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 var card_transitioning = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
 	var swipe_detector = get_child(0)
 	
-	var threshold = 360.0 #get_viewport_rect().size.x / 2.0
+	var threshold = 250.0 #get_viewport_rect().size.x / 2.0
 	var finish_threshold = 1500.0
 	
 	if !card_transitioning and swipe_detector.current_swipe_dir == "Left":
@@ -108,20 +125,9 @@ func _process(delta):
 			else:
 				swipe_offset = max(0,swipe_offset-delta*1500.0)
 	
-	var rotate_amount = deg_to_rad(clamp(swipe_offset/100,-35.0,35.0))
-	current_event_scene.rotation = rotate_amount
-	current_event_scene.position.x = swipe_offset
-	
-func setup_event(evt_scene, evt):
-	var eventimage = evt_scene.get_child(0)
-	var eventlabel = evt_scene.get_child(1)
-	
-	eventimage.texture = evt.image()
-	eventlabel.text = evt.description()
-	
-	var scale = max(0.5,720.0 / evt.image().get_width())
-	eventimage.scale = Vector2(scale,scale)	
-	evt_scene.position = Vector2(0,0)
+	current_event_scene.swipe_offset = swipe_offset
+	#current_event_scene.rotation = rotate_amount
+	#current_event_scene.position.x = swipe_offset
 
 # This is a very basic demonstration of loading an event
 # I think we should review the implementation here
@@ -135,21 +141,19 @@ func setup_event_scenes():
 	add_child(current_event_scene)
 	add_child(next_event_scene)
 	
-	current_event = events[0]
-	setup_event(current_event_scene, current_event)
-	already_triggered = {}
-	already_triggered[current_event] = true
+	
 	#setup_event(current_event, events[1])
 
 func sample_event() -> Event:
 	var sum_weights = 0
+	var turn = GlobalVariables.currentTurn
 	for evt in events:
-		if !already_triggered.has(evt) and evt.condition():
+		if !already_triggered.has(evt) and evt.condition() and turn >= evt.minimum_turn() and turn < evt.maximum_turn():
 			sum_weights += evt.weight()
 	var r = randf_range(0.0, sum_weights)
 	sum_weights = 0
 	for evt in events:
-		if !already_triggered.has(evt) and evt.condition():
+		if !already_triggered.has(evt) and evt.condition() and turn >= evt.minimum_turn() and turn < evt.maximum_turn():
 			sum_weights += evt.weight()
 			if r < sum_weights:
 				return evt

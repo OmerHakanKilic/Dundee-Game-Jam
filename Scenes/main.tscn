@@ -1,13 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://rcw1d5eslvgy"]
+[gd_scene load_steps=16 format=3 uid="uid://rcw1d5eslvgy"]
 
 [ext_resource type="Script" path="res://Scripts/game_main.gd" id="1_cl4kc"]
 [ext_resource type="Script" path="res://Scripts/swipe_detector.gd" id="2_r7q3x"]
+[ext_resource type="Script" path="res://Scripts/StatBarsController.gd" id="3_48ono"]
 [ext_resource type="Texture2D" uid="uid://c8f81y1slj13g" path="res://Assets/Images/Icons/TreasuryIcon.png" id="3_l8kx3"]
 [ext_resource type="Texture2D" uid="uid://ikxtmxj1rh68" path="res://Assets/Images/Icons/PopularityIcon.png" id="4_1rpyp"]
+[ext_resource type="Texture2D" uid="uid://co32v4jnto8qp" path="res://Assets/Images/Icons/climate_empty.png" id="4_w0dsp"]
 [ext_resource type="Texture2D" uid="uid://csqg7okau1kmm" path="res://Assets/Images/Icons/GlobalLeadershipIcon.png" id="5_6qtwa"]
+[ext_resource type="Script" path="res://Scripts/progress_bar_controller.gd" id="5_tu6vq"]
 [ext_resource type="Texture2D" uid="uid://8sw1ovy2jyv7" path="res://Assets/Images/Icons/ClimateIcon.png" id="6_7njjp"]
+[ext_resource type="Texture2D" uid="uid://dxnb1h2hi7pg0" path="res://Assets/Images/Icons/leadership_empty.png" id="7_w7hdl"]
 [ext_resource type="Texture2D" uid="uid://dx575txfvnpy0" path="res://Assets/Images/Icons/Agree-icon(1).png" id="8_v7j74"]
+[ext_resource type="Texture2D" uid="uid://b78jpjmcxyyg3" path="res://Assets/Images/Icons/treasury_empty.png" id="9_5ewm8"]
 [ext_resource type="Texture2D" uid="uid://b6t48sw5a8jvo" path="res://Assets/Images/Icons/Reject-icon(1).png" id="9_dktkq"]
+[ext_resource type="Texture2D" uid="uid://bj3thry25k62o" path="res://Assets/Images/Icons/popularity_empty.png" id="11_jnqrj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_36kve"]
 font_size = 40
@@ -38,22 +44,31 @@ label_settings = SubResource("LabelSettings_36kve")
 [node name="TopBar" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(100, 200)
 layout_mode = 2
+script = ExtResource("3_48ono")
 
-[node name="ClimateIcon" type="TextureRect" parent="MainContainer/TopBar"]
+[node name="ClimateIcon" type="TextureProgressBar" parent="MainContainer/TopBar"]
 layout_mode = 2
-texture = ExtResource("6_7njjp")
+texture_under = ExtResource("4_w0dsp")
+texture_progress = ExtResource("6_7njjp")
+script = ExtResource("5_tu6vq")
 
-[node name="GlobalLeadershipIcon" type="TextureRect" parent="MainContainer/TopBar"]
+[node name="GlobalLeadershipIcon" type="TextureProgressBar" parent="MainContainer/TopBar"]
 layout_mode = 2
-texture = ExtResource("5_6qtwa")
+texture_under = ExtResource("7_w7hdl")
+texture_progress = ExtResource("5_6qtwa")
+script = ExtResource("5_tu6vq")
 
-[node name="TreasuryIcon" type="TextureRect" parent="MainContainer/TopBar"]
+[node name="TreasuryIcon" type="TextureProgressBar" parent="MainContainer/TopBar"]
 layout_mode = 2
-texture = ExtResource("3_l8kx3")
+texture_under = ExtResource("9_5ewm8")
+texture_progress = ExtResource("3_l8kx3")
+script = ExtResource("5_tu6vq")
 
-[node name="PopularityIcon" type="TextureRect" parent="MainContainer/TopBar"]
+[node name="PopularityIcon" type="TextureProgressBar" parent="MainContainer/TopBar"]
 layout_mode = 2
-texture = ExtResource("4_1rpyp")
+texture_under = ExtResource("11_jnqrj")
+texture_progress = ExtResource("4_1rpyp")
+script = ExtResource("5_tu6vq")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 550)
