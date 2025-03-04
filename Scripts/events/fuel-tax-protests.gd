@@ -7,12 +7,12 @@ func image() -> CompressedTexture2D:
 	return load("res://Assets/Images/lorry_blockade.png")
 
 func condition() -> bool:
-	# check if the "Increase fuel tax" event has occurred and the game is in EndGame
-	# return GlobalVariables.increase_fuel_tax_occurred and GlobalVariables.game_state == "EndGame"
+	# check if the "Increase fuel tax" event has occurred
+	# return GlobalVariables.increase_fuel_tax_occurred
 	return True
 
 func minimum_turn() -> int:
-	return GlobalVariables.midGame
+	return GlobalVariables.endGameStart
 
 func approve_effect():
 	# YES option: +10 Popularity, -5 Treasury, -5 Climate
