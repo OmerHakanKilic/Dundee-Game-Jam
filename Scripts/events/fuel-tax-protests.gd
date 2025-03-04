@@ -9,6 +9,7 @@ func image() -> CompressedTexture2D:
 func condition() -> bool:
 	# check if the "Increase fuel tax" event has occurred and the game is in EndGame
 	# return GlobalVariables.increase_fuel_tax_occurred and GlobalVariables.game_state == "EndGame"
+	return True
 
 func minimum_turn() -> int:
 	return GlobalVariables.midGame
