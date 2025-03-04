@@ -4,7 +4,7 @@ func description() -> String:
 	return "The ban on ICE vehicles has plunged traditional automotive manufacturers into crisis, sparking protests and job losses. Do you launch a support package to stabilise the industry and cushion its economic shock?"
 
 func image() -> CompressedTexture2D:
-	return load("res://Assets/Images/automotive-industry-unrest.png")
+	return load("res://Assets/Images/automotive-industry-unrest.jpg")
 
 func condition() -> bool:
 	return GlobalVariables.flags.has("ICE_ban")

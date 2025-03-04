@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmke85gpmwvi7"
-path="res://.godot/imported/automotive-industry-unrest.png-c17364f2bb2a8d8e1a4490e84d5da800.ctex"
+uid="uid://fb3hyl6l5vic"
+path="res://.godot/imported/public-outcry.png-c7246c540e49585c2a2f3a91ea9b8182.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/automotive-industry-unrest.png"
-dest_files=["res://.godot/imported/automotive-industry-unrest.png-c17364f2bb2a8d8e1a4490e84d5da800.ctex"]
+source_file="res://Assets/Images/public-outcry.png"
+dest_files=["res://.godot/imported/public-outcry.png-c7246c540e49585c2a2f3a91ea9b8182.ctex"]
 
 [params]
 

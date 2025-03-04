@@ -61,7 +61,50 @@ func reset():
 	already_triggered[current_event] = true	
 	date_from_turn()
 
+var treasury = 0.0
+var popularity = 0.0
+var leadership = 0.0
+var climate = 0.0
+
 func begin_transition():
+	var change_treasury = GlobalVariables.treasury - treasury
+	var change_popularity = GlobalVariables.popularity - popularity
+	var change_climate = GlobalVariables.climate - climate
+	var change_leadership = GlobalVariables.leadership - leadership
+	
+	var biggest_change = 1
+	biggest_change = max(biggest_change,change_treasury)
+	biggest_change = max(biggest_change,change_popularity)
+	biggest_change = max(biggest_change,change_leadership)
+	biggest_change = max(biggest_change,change_climate)
+	
+	var sound_to_play = null
+	
+	if abs(change_treasury) >= biggest_change:
+		if change_treasury > 0 :
+			sound_to_play = preload("res://Assets/Sounds/cash-register-kaching-sound-effect-125042.mp3")
+		else:
+			sound_to_play = preload("res://Assets/Sounds/paper-rip-slow-252618.mp3")
+	elif abs(change_climate) >= biggest_change:
+		if change_climate > 0:
+			sound_to_play = preload("res://Assets/Sounds/bushmovement-6986.mp3")
+		else:
+			sound_to_play = preload("res://Assets/Sounds/chainsaw-start-218438.mp3")
+	elif abs(change_leadership) >= biggest_change:
+		if change_leadership > 0:
+			sound_to_play = preload("res://Assets/Sounds/gavel-of-justice-124029.mp3")
+		else:
+			sound_to_play = preload("res://Assets/Sounds/police-siren-99029.mp3")
+	elif abs(change_popularity) >= biggest_change:
+		if change_popularity > 0:
+			sound_to_play = preload("res://Assets/Sounds/small-applause-6695.mp3")
+		else:
+			sound_to_play = preload("res://Assets/Sounds/boo-6377.mp3")
+	
+	if sound_to_play != null:		
+		$AudioStreamPlayer2D.stream = sound_to_play
+		$AudioStreamPlayer2D.play()
+	
 	card_transitioning = true
 	clamp_vars()
 	next_event = sample_event()
@@ -115,11 +158,11 @@ func _process(delta):
 		if card_transitioning == false:
 			# swipe left
 			if swipe_offset > threshold:
-				current_event.refuse_effect()
+				current_event.approve_effect()
 				begin_transition()
 			# swipe right
 			elif swipe_offset < -threshold:
-				current_event.approve_effect()
+				current_event.refuse_effect()
 				begin_transition()
 		
 		if card_transitioning == true:

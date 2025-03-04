@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1akjk1lv3phq"]
 
 [ext_resource type="Script" path="res://Scripts/event_card.gd" id="1_8qbi4"]
-[ext_resource type="Texture2D" uid="uid://nskpag6mr5kr" path="res://Assets/Images/new-train-line-investment.png" id="2_v7wi7"]
+[ext_resource type="Texture2D" uid="uid://df4n72mv6o6w1" path="res://Assets/Images/forest_fire.jpg" id="2_v7wi7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7y8oa"]
 font_size = 26
