@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxsycdqvd60r0"
-path="res://.godot/imported/Deepwater_Horizon_offshore_drilling_unit_on_fire_2010.jpg-5741adcbfe807ecbe2e57df8f55e8e82.ctex"
+uid="uid://d2u8xbwffhmla"
+path="res://.godot/imported/ice-ban.png-f7613c9a5cf10b1114dbf81e977ac08a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Deepwater_Horizon_offshore_drilling_unit_on_fire_2010.jpg"
-dest_files=["res://.godot/imported/Deepwater_Horizon_offshore_drilling_unit_on_fire_2010.jpg-5741adcbfe807ecbe2e57df8f55e8e82.ctex"]
+source_file="res://Assets/Images/ice-ban.png"
+dest_files=["res://.godot/imported/ice-ban.png-f7613c9a5cf10b1114dbf81e977ac08a.ctex"]
 
 [params]
 

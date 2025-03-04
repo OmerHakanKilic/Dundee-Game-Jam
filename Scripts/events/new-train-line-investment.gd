@@ -10,6 +10,14 @@ func condition() -> bool:
 	# can read from globals to see if conditions are met
 	return true
 	
+func approve_effect():
+	GlobalVariables.treasury -= 10
+	GlobalVariables.popularity += 20
+	GlobalVariables.flags["fossil_fuel_reassessment"] = true
+	
+func refuse_effect():
+	GlobalVariables.popularity -= 15
+	
 func weight() -> float:
 	# can read from globals to modify weight
-	return 1.0
+	return 0.8

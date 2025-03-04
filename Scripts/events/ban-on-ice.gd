@@ -1,22 +1,23 @@
 extends Event
 
 func description() -> String:
-	return "A charity, “Protect our Community”, has called for commissions into a nuclear safety review."
+	return "Environmental activists have called for a reduction in carbon emissions by banning cars with ICE engines. Do you accept?"
 	
 func image() -> CompressedTexture2D:
-	return load("res://Assets/Images/commission-nuclear-safety-review.png")
+	return load("res://Assets/Images/ice-ban.png")
 
 func condition() -> bool:
 	# can read from globals to see if conditions are met
 	return true
 	
 func approve_effect():
-	GlobalVariables.popularity += 10
-	GlobalVariables.treasury -= 10
+	GlobalVariables.climate += 15
+	GlobalVariables.treasury -= 5
+	GlobalVariables.popularity -= 10
 	
 func refuse_effect():
-	GlobalVariables.popularity -= 5
+	pass
 	
 func weight() -> float:
 	# can read from globals to modify weight
-	return 0.7
+	return 0.75
