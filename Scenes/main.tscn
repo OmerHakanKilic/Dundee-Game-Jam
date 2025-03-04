@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://rcw1d5eslvgy"]
+[gd_scene load_steps=22 format=3 uid="uid://rcw1d5eslvgy"]
 
 [ext_resource type="Script" path="res://Scripts/game_main.gd" id="1_cl4kc"]
 [ext_resource type="Script" path="res://Scripts/swipe_detector.gd" id="2_r7q3x"]
@@ -14,6 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://b78jpjmcxyyg3" path="res://Assets/Images/Icons/treasury_empty.png" id="9_5ewm8"]
 [ext_resource type="Texture2D" uid="uid://b6t48sw5a8jvo" path="res://Assets/Images/Icons/Reject-icon(1).png" id="9_dktkq"]
 [ext_resource type="Texture2D" uid="uid://bj3thry25k62o" path="res://Assets/Images/Icons/popularity_empty.png" id="11_jnqrj"]
+[ext_resource type="AudioStream" uid="uid://b2u1sgr3jte2w" path="res://Assets/sfxs/cash-register-kaching-sound-effect-125042.mp3" id="15_vfeon"]
+[ext_resource type="AudioStream" uid="uid://t6noej6qmkgp" path="res://Assets/sfxs/chainsaw-start-218438.mp3" id="16_8mtmx"]
+[ext_resource type="AudioStream" uid="uid://b135hm3jxvnoy" path="res://Assets/sfxs/boo-6377.mp3" id="17_p3q5d"]
+[ext_resource type="AudioStream" uid="uid://cc55efj36c6ym" path="res://Assets/sfxs/gavel-of-justice-124029.mp3" id="18_hjugn"]
+[ext_resource type="AudioStream" uid="uid://d26ayd7rjx42m" path="res://Assets/sfxs/police-siren-99029.mp3" id="19_lcexe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jo5d5"]
 font_size = 32
@@ -133,3 +138,18 @@ texture = ExtResource("8_v7j74")
 position = Vector2(105, 565)
 scale = Vector2(2, 2)
 texture = ExtResource("9_dktkq")
+
+[node name="cashregister" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_vfeon")
+
+[node name="chainsaw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_8mtmx")
+
+[node name="boo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_p3q5d")
+
+[node name="gavelofjustice" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_hjugn")
+
+[node name="policesiren" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_lcexe")
