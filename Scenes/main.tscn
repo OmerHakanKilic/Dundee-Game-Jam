@@ -25,25 +25,16 @@ script = ExtResource("1_cl4kc")
 script = ExtResource("2_r7q3x")
 
 [node name="MainContainer" type="VBoxContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1.0
-offset_right = 1076.0
-offset_bottom = 1921.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 812.0
+offset_bottom = 917.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Date" type="Label" parent="MainContainer"]
-layout_mode = 2
-text = "11.03.2025"
-label_settings = SubResource("LabelSettings_36kve")
 
 [node name="TopBar" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(100, 200)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 script = ExtResource("3_48ono")
 
 [node name="ClimateIcon" type="TextureProgressBar" parent="MainContainer/TopBar"]
@@ -70,9 +61,16 @@ texture_under = ExtResource("11_jnqrj")
 texture_progress = ExtResource("4_1rpyp")
 script = ExtResource("5_tu6vq")
 
-[node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
-custom_minimum_size = Vector2(0, 550)
+[node name="Date" type="Label" parent="MainContainer"]
 layout_mode = 2
+text = "11.03.2025"
+label_settings = SubResource("LabelSettings_36kve")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 0
 
 [node name="BottomBar" type="HBoxContainer" parent="MainContainer"]
 layout_mode = 2

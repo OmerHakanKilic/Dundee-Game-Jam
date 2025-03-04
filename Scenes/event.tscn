@@ -4,18 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://nskpag6mr5kr" path="res://Assets/Images/new-train-line-investment.png" id="2_v7wi7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7y8oa"]
-font_size = 40
+font_size = 26
 
 [node name="Event" type="VBoxContainer"]
 scale = Vector2(0.787593, 0.673302)
 script = ExtResource("1_8qbi4")
 
 [node name="EventImage" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(480, 480)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("2_v7wi7")
+expand_mode = 5
 
 [node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 text = " Lorem ipsum dolor sit a  Lorem ipsum dolor sit a Lorem ipsum dolor sit a"
 label_settings = SubResource("LabelSettings_7y8oa")
 horizontal_alignment = 1
