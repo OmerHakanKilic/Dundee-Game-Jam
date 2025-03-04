@@ -1,6 +1,5 @@
 extends Node2D
 
-var swipe_distance = 100
 var start_pos: Vector2
 var swiping = false
 var current_swipe_amount = 0
@@ -15,8 +14,6 @@ func handle_swipe(release : bool):
 	else:
 		if delta.x < 0 : current_swipe_dir = "Left"
 		else: current_swipe_dir = "Right"
-	if delta.length() > swipe_distance:
-		return
 
 func _input(event: InputEvent):
 	if event is InputEventScreenTouch or event is InputEventMouseButton:
