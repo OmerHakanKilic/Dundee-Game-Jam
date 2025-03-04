@@ -48,14 +48,14 @@ func prepare_events():
 				file_name = dir.get_next()
 				
 func reset():
-	GlobalVariables.treasury = 35
-	GlobalVariables.popularity = 40
+	GlobalVariables.treasury = 40
+	GlobalVariables.popularity = 50
 	GlobalVariables.climate = 40
 	GlobalVariables.leadership = 50
 	GlobalVariables.currentTurn = 0
 	GlobalVariables.flags = {}
 	GlobalVariables.shouldReset = false
-	current_event = events[0]
+	current_event = preload("res://Scripts/endscreens/game-start.gd").new() as Event
 	current_event_scene.apply_event(current_event)
 	already_triggered = {}
 	already_triggered[current_event] = true	
@@ -232,5 +232,4 @@ func sample_event() -> Event:
 				return evt
 	
 	# No events left, so it's game over
-	game_over = true
-	return lose_screen as Event
+	return preload("res://Scripts/endscreens/survival.gd").new() as Event

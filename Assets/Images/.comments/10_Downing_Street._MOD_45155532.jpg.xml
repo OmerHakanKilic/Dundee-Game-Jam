@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<comment version="3.0">
+  <caption>No10-2013-005-004</caption>
+  <note>Number 10 Downing Street is the headquarters and London residence of the Prime Minister of the United Kingdom.</note>
+  <place>Whitehall</place>
+  <categories>
+    <category value="No10"/>
+    <category value="10 Downing Street"/>
+    <category value="Number"/>
+    <category value="10"/>
+    <category value="Prime"/>
+    <category value="Minister"/>
+  </categories>
+</comment>
