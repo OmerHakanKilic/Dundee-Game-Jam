@@ -43,8 +43,7 @@ func begin_transition():
 	next_event = sample_event()
 	setup_event(next_event_scene, next_event)
 	already_triggered[next_event] = true
-	
-	pass
+	GlobalVariables.currentTurn += 1
 
 func clamp_vars():
 	GlobalVariables.treasury = clamp(GlobalVariables.treasury,0,100)
@@ -143,13 +142,14 @@ func setup_event_scenes():
 
 func sample_event() -> Event:
 	var sum_weights = 0
+	var turn = GlobalVariables.currentTurn
 	for evt in events:
-		if !already_triggered.has(evt) and evt.condition():
+		if !already_triggered.has(evt) and evt.condition() and turn >= evt.minimum_turn() and turn < evt.maximum_turn():
 			sum_weights += evt.weight()
 	var r = randf_range(0.0, sum_weights)
 	sum_weights = 0
 	for evt in events:
-		if !already_triggered.has(evt) and evt.condition():
+		if !already_triggered.has(evt) and evt.condition() and turn >= evt.minimum_turn() and turn < evt.maximum_turn():
 			sum_weights += evt.weight()
 			if r < sum_weights:
 				return evt
