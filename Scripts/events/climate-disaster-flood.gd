@@ -10,18 +10,18 @@ func minimum_turn() -> int:
 	return GlobalVariables.midgameStart
 
 func maximum_turn() -> int:
-	return GlobalVariables.lategameStart
+	return GlobalVariables.endgameStart
 
 func condition() -> bool:
 	return GlobalVariables.climate < 50
 
 func approve_effect():
 	GlobalVariables.treasury -= 15
-	GlobalVariables.global_leadership -= 5
+	GlobalVariables.leadership -= 5
 
 func refuse_effect():
 	GlobalVariables.treasury -= 15
-	GlobalVariables.global_leadership -= 5
+	GlobalVariables.leadership -= 5
 
 func weight() -> float:
 	return 0.65

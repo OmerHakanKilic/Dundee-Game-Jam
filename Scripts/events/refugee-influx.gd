@@ -10,13 +10,13 @@ func condition() -> bool:
 	return true
 
 func approve_effect():
-	GlobalVariables.global_leadership += 10
+	GlobalVariables.leadership += 10
 	GlobalVariables.popularity += 15
 	GlobalVariables.treasury -= 20
 	GlobalVariables.flags["refugee_crisis"] = true
 	
 func refuse_effect():
-	GlobalVariables.global_leadership -= 10
+	GlobalVariables.leadership -= 10
 	GlobalVariables.popularity -= 15
 	GlobalVariables.flags["refugee_crisis"] = true
 	

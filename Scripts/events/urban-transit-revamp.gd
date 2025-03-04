@@ -7,13 +7,13 @@ func image() -> CompressedTexture2D:
 	return load("res://Assets/Images/urban-transit-revamp.png")
 
 func condition() -> bool:
-	return GlobalVariables.flags["green_infrastructure"]
+	return GlobalVariables.flags.has("green_infrastructure")
 
 func approve_effect():
 	GlobalVariables.climate += 10
 	GlobalVariables.popularity += 15
 	GlobalVariables.treasury -= 10
-	GlobalVariables.global_leadership += 5
+	GlobalVariables.leadership += 5
 	GlobalVariables.flags["urban_transit"] = true
 	
 func refuse_effect():

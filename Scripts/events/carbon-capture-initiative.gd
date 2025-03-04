@@ -10,12 +10,12 @@ func minimum_turn() -> int:
 	return GlobalVariables.midgameStart
 
 func maximum_turn() -> int:
-	return GlobalVariables.lategameStart
+	return GlobalVariables.endgameStart
 
 func approve_effect():
 	GlobalVariables.climate += 15
 	GlobalVariables.treasury -= 10
-	GlobalVariables.global_leadership += 15
+	GlobalVariables.leadership += 15
 	GlobalVariables.flags["carbon_capture"] = true
 	
 func refuse_effect():

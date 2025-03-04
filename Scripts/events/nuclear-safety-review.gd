@@ -8,11 +8,11 @@ func image() -> CompressedTexture2D:
 
 func condition() -> bool:
 	# This event only becomes available if the nuclear safety review has been commissioned and we're in midgame.
-	return GlobalVariables.flags["commission_nuclear_safety_review"]
+	return GlobalVariables.flags.has("commission_nuclear_safety_review")
 
 func maximum_turn() -> int:
 	# Assuming midgame events expire at the start of the late game.
-	return GlobalVariables.lategameStart
+	return GlobalVariables.endgameStart
 
 func approve_effect():
 	GlobalVariables.climate -= 5

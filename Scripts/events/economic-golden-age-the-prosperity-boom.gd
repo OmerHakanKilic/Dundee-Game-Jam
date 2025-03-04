@@ -11,11 +11,11 @@ func condition() -> bool:
 
 func approve_effect():
 	GlobalVariables.popularity += 15
-	GlobalVariables.global_leadership += 15
+	GlobalVariables.leadership += 15
 
 func refuse_effect():
 	GlobalVariables.popularity += 15
-	GlobalVariables.global_leadership += 15
+	GlobalVariables.leadership += 15
 
 # Modifier: Any future economic events that increase Treasury increases further by 5
 

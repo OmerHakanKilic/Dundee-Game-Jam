@@ -7,11 +7,10 @@ func image() -> CompressedTexture2D:
 	return load("res://Assets/Images/urban_dialogue.png")
 
 func condition() -> bool:
-	# return GlobalVariables.green_infrastructure
-    return True
+	return GlobalVariables.flags.has("green_infrastructure")
 
 func minimum_turn() -> int:
-	return GlobalVariables.endGameStart
+	return GlobalVariables.endgameStart
 
 func approve_effect():
 	GlobalVariables.popularity += 5

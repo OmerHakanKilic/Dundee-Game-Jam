@@ -8,10 +8,10 @@ func image() -> CompressedTexture2D:
 
 func condition() -> bool:
 	# return GlobalVariables.pandemic_outbreak_occurred
-	return True
+	return true
 
 func minimum_turn() -> int:
-	return GlobalVariables.endGameStart
+	return GlobalVariables.endgameStart
 
 func approve_effect():
 	GlobalVariables.popularity += 15

@@ -9,10 +9,10 @@ func image() -> CompressedTexture2D:
 func condition() -> bool:
 	# Check that the "Climate Disaster: Flood" event has occurred
 	# return  GlobalVariables.climate_disaster_flood_occurred
-    return True
+	return true
 
 func minimum_turn() -> int:
-	return GlobalVariables.endGameStart
+	return GlobalVariables.endgameStart
 
 func approve_effect():
 	GlobalVariables.popularity += 15

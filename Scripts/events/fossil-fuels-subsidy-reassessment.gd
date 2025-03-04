@@ -16,6 +16,7 @@ func maximum_turn() -> int:
 func approve_effect():
 	GlobalVariables.popularity += 10
 	GlobalVariables.treasury += 5
+	GlobalVariables.flags["fossil-fuels-subsidy-reassessment"] = true
 
 func refuse_effect():
 	GlobalVariables.popularity -= 15

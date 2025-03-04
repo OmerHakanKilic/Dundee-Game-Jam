@@ -8,18 +8,18 @@ func image() -> CompressedTexture2D:
 
 func condition() -> bool:
 	# return GlobalVariables.the_world_turns_away_occurred
-    return True
+	return true
 
 func minimum_turn() -> int:
-	return GlobalVariables.endGameStart
+	return GlobalVariables.endgameStart
 
 func approve_effect():
-	GlobalVariables.global_leadership += 15
+	GlobalVariables.leadership += 15
 	GlobalVariables.popularity += 10
 	GlobalVariables.treasury -= 15
 
 func refuse_effect():
-	GlobalVariables.global_leadership -= 20
+	GlobalVariables.leadership -= 20
 	GlobalVariables.popularity -= 15
 
 func weight() -> float:

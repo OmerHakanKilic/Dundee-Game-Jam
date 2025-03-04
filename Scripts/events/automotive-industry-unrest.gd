@@ -7,12 +7,12 @@ func image() -> CompressedTexture2D:
 	return load("res://Assets/Images/automotive-industry-unrest.png")
 
 func condition() -> bool:
-	return GlobalVariables.flags["ICE_ban"]
+	return GlobalVariables.flags.has("ICE_ban")
 
 func approve_effect():
 	GlobalVariables.popularity += 10
 	GlobalVariables.treasury -= 15
-	GlobalVariables.global_leadership += 5
+	GlobalVariables.leadership += 5
 
 func refuse_effect():
 	GlobalVariables.popularity -= 15

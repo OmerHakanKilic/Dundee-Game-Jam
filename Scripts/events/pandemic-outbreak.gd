@@ -10,7 +10,7 @@ func minimum_turn() -> int:
 	return GlobalVariables.midgameStart
 
 func maximum_turn() -> int:
-	return GlobalVariables.lategameStart
+	return GlobalVariables.endgameStart
 
 # Modifier: -2 Treasury over the five events
 

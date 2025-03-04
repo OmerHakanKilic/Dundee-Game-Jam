@@ -10,13 +10,13 @@ func minimum_turn() -> int:
 	return GlobalVariables.midgameStart
 
 func maximum_turn() -> int:
-	return GlobalVariables.lategameStart
+	return GlobalVariables.endgameStart
 
 func approve_effect():
 	GlobalVariables.climate -= 20
 	GlobalVariables.popularity -= 15
 	GlobalVariables.treasury += 40
-	GlobalVariables.party_coalition_integrity -= 10
+	#GlobalVariables.party_coalition_integrity -= 10
 	
 func refuse_effect():
 	GlobalVariables.climate += 25

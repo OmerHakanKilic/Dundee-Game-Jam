@@ -7,15 +7,15 @@ func image() -> CompressedTexture2D:
 	return load("res://Assets/Images/the-world-turns-away.png")
 
 func condition() -> bool:
-	return GlobalVariables.global_leadership < 30
+	return GlobalVariables.leadership < 30
 
 func approve_effect():
-	GlobalVariables.global_leadership -= 15
+	GlobalVariables.leadership -= 15
 	GlobalVariables.popularity -= 10
 	GlobalVariables.treasury -= 5
 
 func refuse_effect():
-	GlobalVariables.global_leadership -= 15
+	GlobalVariables.leadership -= 15
 	GlobalVariables.popularity -= 10
 	GlobalVariables.treasury -= 5
 
