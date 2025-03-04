@@ -135,6 +135,10 @@ func _process(delta):
 				swipe_offset = min(0,swipe_offset+delta*1500.0)
 			else:
 				swipe_offset = max(0,swipe_offset-delta*1500.0)
+				
+	var finish_fadeout = max(0.0,2.0*(abs(swipe_offset)-finish_threshold/2.0) / finish_threshold)
+	$ApproveIcon.modulate.a = swipe_offset / threshold - finish_fadeout
+	$RejectIcon.modulate.a = swipe_offset / (-threshold) - finish_fadeout
 	
 	current_event_scene.swipe_offset = swipe_offset
 	#current_event_scene.rotation = rotate_amount

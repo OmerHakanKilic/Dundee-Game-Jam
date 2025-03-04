@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://rcw1d5eslvgy"]
+[gd_scene load_steps=17 format=3 uid="uid://rcw1d5eslvgy"]
 
 [ext_resource type="Script" path="res://Scripts/game_main.gd" id="1_cl4kc"]
 [ext_resource type="Script" path="res://Scripts/swipe_detector.gd" id="2_r7q3x"]
@@ -14,6 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://b78jpjmcxyyg3" path="res://Assets/Images/Icons/treasury_empty.png" id="9_5ewm8"]
 [ext_resource type="Texture2D" uid="uid://b6t48sw5a8jvo" path="res://Assets/Images/Icons/Reject-icon(1).png" id="9_dktkq"]
 [ext_resource type="Texture2D" uid="uid://bj3thry25k62o" path="res://Assets/Images/Icons/popularity_empty.png" id="11_jnqrj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jo5d5"]
+font_size = 32
+font_color = Color(1, 1, 1, 0.415686)
 
 [sub_resource type="LabelSettings" id="LabelSettings_36kve"]
 font_size = 40
@@ -43,11 +47,33 @@ texture_under = ExtResource("4_w0dsp")
 texture_progress = ExtResource("6_7njjp")
 script = ExtResource("5_tu6vq")
 
+[node name="Label" type="Label" parent="MainContainer/TopBar/ClimateIcon"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 78.0
+offset_right = 142.0
+offset_bottom = 123.0
+text = "100%"
+label_settings = SubResource("LabelSettings_jo5d5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GlobalLeadershipIcon" type="TextureProgressBar" parent="MainContainer/TopBar"]
 layout_mode = 2
 texture_under = ExtResource("7_w7hdl")
 texture_progress = ExtResource("5_6qtwa")
 script = ExtResource("5_tu6vq")
+
+[node name="Label2" type="Label" parent="MainContainer/TopBar/GlobalLeadershipIcon"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 81.0
+offset_right = 137.0
+offset_bottom = 126.0
+text = "100%"
+label_settings = SubResource("LabelSettings_jo5d5")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TreasuryIcon" type="TextureProgressBar" parent="MainContainer/TopBar"]
 layout_mode = 2
@@ -55,11 +81,33 @@ texture_under = ExtResource("9_5ewm8")
 texture_progress = ExtResource("3_l8kx3")
 script = ExtResource("5_tu6vq")
 
+[node name="Label3" type="Label" parent="MainContainer/TopBar/TreasuryIcon"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 78.0
+offset_right = 139.0
+offset_bottom = 123.0
+text = "100%"
+label_settings = SubResource("LabelSettings_jo5d5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PopularityIcon" type="TextureProgressBar" parent="MainContainer/TopBar"]
 layout_mode = 2
 texture_under = ExtResource("11_jnqrj")
 texture_progress = ExtResource("4_1rpyp")
 script = ExtResource("5_tu6vq")
+
+[node name="Label4" type="Label" parent="MainContainer/TopBar/PopularityIcon"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 84.0
+offset_right = 153.0
+offset_bottom = 129.0
+text = "100%"
+label_settings = SubResource("LabelSettings_jo5d5")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Date" type="Label" parent="MainContainer"]
 layout_mode = 2
@@ -83,3 +131,13 @@ texture_normal = ExtResource("8_v7j74")
 [node name="DisagreeButton" type="TextureButton" parent="MainContainer/BottomBar"]
 layout_mode = 2
 texture_normal = ExtResource("9_dktkq")
+
+[node name="ApproveIcon" type="Sprite2D" parent="."]
+position = Vector2(627, 554)
+scale = Vector2(2, 2)
+texture = ExtResource("8_v7j74")
+
+[node name="RejectIcon" type="Sprite2D" parent="."]
+position = Vector2(105, 565)
+scale = Vector2(2, 2)
+texture = ExtResource("9_dktkq")
