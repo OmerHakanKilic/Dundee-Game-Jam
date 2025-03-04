@@ -24,6 +24,9 @@ func weight() -> float:
 	# can read from globals to modify weight
 	return 1.0
 	
+func appear_effect():
+	pass
+	
 func approve_effect():
 	pass
 
