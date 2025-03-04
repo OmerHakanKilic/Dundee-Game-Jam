@@ -22,6 +22,7 @@ func _ready():
 	randomize()
 	prepare_events()
 	setup_event_scenes()
+	reset()
 	position = get_viewport_rect().size  / 2
 
 # This function iterates all script files in res://Scripts/events and loads them into the events array
@@ -36,11 +37,23 @@ func prepare_events():
 				var evt = load("res://Scripts/events/" + file_name).new()
 				events.append(evt)
 				file_name = dir.get_next()
+				
+func reset():
+	GlobalVariables.treasury = 30
+	GlobalVariables.popularity = 40
+	GlobalVariables.climate = 30
+	GlobalVariables.leadership = 30
+	GlobalVariables.currentTurn = 0
+	current_event = events[0]
+	setup_event(current_event_scene, current_event)
+	already_triggered = {}
+	already_triggered[current_event] = true
 
 func begin_transition():
 	card_transitioning = true
 	clamp_vars()
 	next_event = sample_event()
+	next_event.appear_effect()
 	setup_event(next_event_scene, next_event)
 	already_triggered[next_event] = true
 	GlobalVariables.currentTurn += 1
@@ -73,7 +86,7 @@ var card_transitioning = false
 func _process(delta):	
 	var swipe_detector = get_child(0)
 	
-	var threshold = 360.0 #get_viewport_rect().size.x / 2.0
+	var threshold = 250.0 #get_viewport_rect().size.x / 2.0
 	var finish_threshold = 1500.0
 	
 	if !card_transitioning and swipe_detector.current_swipe_dir == "Left":
@@ -134,10 +147,7 @@ func setup_event_scenes():
 	add_child(current_event_scene)
 	add_child(next_event_scene)
 	
-	current_event = events[0]
-	setup_event(current_event_scene, current_event)
-	already_triggered = {}
-	already_triggered[current_event] = true
+	
 	#setup_event(current_event, events[1])
 
 func sample_event() -> Event:
