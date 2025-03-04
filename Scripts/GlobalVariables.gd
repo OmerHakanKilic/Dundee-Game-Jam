@@ -14,6 +14,8 @@ var shouldReset = false
 
 var flags : Dictionary={}
 
+var gameLost = false
+
 #Settings
 
 var volume:int=50
