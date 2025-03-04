@@ -26,4 +26,5 @@ func _process(delta: float) -> void:
 	else:
 		tint_progress = Color.WHITE_SMOKE
 	
+	get_child(0).text = str(round(current)) + "%"
 	value = current
