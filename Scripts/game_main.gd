@@ -17,8 +17,17 @@ var lose_screen = preload("res://Scripts/endscreens/lose-screen.gd").new()
 
 var game_over = true
 
+func date_from_turn() -> String:
+	var year = 2020 + floor(GlobalVariables.currentTurn / 4)
+	var month = int(GlobalVariables.currentTurn % 4)	
+	var months = ["February", "May", "August", "November"]
+	$MainContainer/Date.text = months[month] + " " + str(year)
+	return str(year) + months[month]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var s =(get_viewport().size.x / 4) / 200.0
+	scale =  Vector2(s,s)
 	randomize()
 	prepare_events()
 	setup_event_scenes()
@@ -49,7 +58,8 @@ func reset():
 	current_event = events[0]
 	current_event_scene.apply_event(current_event)
 	already_triggered = {}
-	already_triggered[current_event] = true
+	already_triggered[current_event] = true	
+	date_from_turn()
 
 func begin_transition():
 	card_transitioning = true
@@ -82,6 +92,7 @@ func finish_transition():
 	current_event_scene.rotation = 0
 	next_event_scene.rotation = 0
 	blank_next_event()
+	date_from_turn()
 	if GlobalVariables.shouldReset == true:		
 		reset()
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
@@ -138,8 +149,11 @@ func setup_event_scenes():
 	current_event_scene.z_index = -1
 	next_event_scene.z_index = -2
 	
-	add_child(current_event_scene)
-	add_child(next_event_scene)
+	blank_next_event()
+	next_event_scene.position.x = -2000
+	
+	$MainContainer/MarginContainer.add_child(current_event_scene)
+	$MainContainer/MarginContainer.add_child(next_event_scene)
 	
 	
 	#setup_event(current_event, events[1])
