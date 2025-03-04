@@ -65,6 +65,8 @@ func finish_transition():
 	next_event_scene.z_index = -2
 	current_event_scene.z_index = -1
 	current_event = next_event
+	current_event_scene.rotation = 0
+	next_event_scene.rotation = 0
 	blank_next_event()
 
 var card_transitioning = false
@@ -72,16 +74,14 @@ var card_transitioning = false
 func _process(delta):	
 	var swipe_detector = get_child(0)
 	
-	var threshold = 250.0
-	var finish_threshold = 1000.0
+	var threshold = get_viewport_rect().size.x / 2.0
+	var finish_threshold = 1500.0
 	
 	if !card_transitioning and swipe_detector.current_swipe_dir == "Left":
-		swipe_offset = swipe_detector.current_swipe_amount * -1.0
-		
+		swipe_offset = swipe_detector.current_swipe_amount * -1.0		
 		# Display the action prompt
 	elif !card_transitioning and swipe_detector.current_swipe_dir == "Right":
-		swipe_offset = swipe_detector.current_swipe_amount
-		
+		swipe_offset = swipe_detector.current_swipe_amount	
 		# Display the action prompt
 	else:
 		if card_transitioning == false:
@@ -96,18 +96,20 @@ func _process(delta):
 		
 		if card_transitioning == true:
 			if swipe_offset < 0:
-				swipe_offset -= delta*2500.0
+				swipe_offset -= delta*3000.0
 			else:
-				swipe_offset += delta*2500.0
+				swipe_offset += delta*3000.0
 				
 			if abs(swipe_offset) > finish_threshold:
 				finish_transition()
 		else:		
 			if swipe_offset < 0:
-				swipe_offset = min(0,swipe_offset+delta*600.0)
+				swipe_offset = min(0,swipe_offset+delta*1500.0)
 			else:
-				swipe_offset = max(0,swipe_offset-delta*600.0)
+				swipe_offset = max(0,swipe_offset-delta*1500.0)
 	
+	var rotate_amount = deg_to_rad(clamp(swipe_offset/100,-35.0,35.0))
+	current_event_scene.rotation = rotate_amount
 	current_event_scene.position.x = swipe_offset
 	
 func setup_event(evt_scene, evt):
@@ -116,6 +118,9 @@ func setup_event(evt_scene, evt):
 	
 	eventimage.texture = evt.image()
 	eventlabel.text = evt.description()
+	
+	var scale = max(0.5,720.0 / evt.image().get_width())
+	eventimage.scale = Vector2(scale,scale)	
 	evt_scene.position = Vector2(0,0)
 
 # This is a very basic demonstration of loading an event
