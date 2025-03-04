@@ -126,7 +126,6 @@ func _process(delta):
 				swipe_offset = max(0,swipe_offset-delta*1500.0)
 	
 	current_event_scene.swipe_offset = swipe_offset
-	var rotate_amount = deg_to_rad(clamp(swipe_offset/100,-35.0,35.0))
 	#current_event_scene.rotation = rotate_amount
 	#current_event_scene.position.x = swipe_offset
 
