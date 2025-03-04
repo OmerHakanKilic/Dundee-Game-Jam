@@ -22,7 +22,7 @@ func _ready():
 	randomize()
 	prepare_events()
 	setup_event_scenes()
-	position = get_viewport_rect().size  / 2
+	#position = get_viewport_rect().size  / 2
 
 # This function iterates all script files in res://Scripts/events and loads them into the events array
 # We assume all these files are valid events! There is no checking at this stage
