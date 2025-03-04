@@ -74,7 +74,7 @@ var card_transitioning = false
 func _process(delta):	
 	var swipe_detector = get_child(0)
 	
-	var threshold = get_viewport_rect().size.x / 2.0
+	var threshold = 360.0 #get_viewport_rect().size.x / 2.0
 	var finish_threshold = 1500.0
 	
 	if !card_transitioning and swipe_detector.current_swipe_dir == "Left":
