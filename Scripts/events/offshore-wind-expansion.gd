@@ -1,0 +1,25 @@
+extends Event
+
+func description() -> String:
+	return "Proposals to expand offshore wind farms could boost renewable capacity and create jobs. Endorse the expansion?"
+	
+func image() -> CompressedTexture2D:
+	return load("res://Assets/Images/offshore-wind-expansion.png")
+
+func condition() -> bool:
+	# can read from globals to see if conditions are met
+	return true
+	
+func approve_effect():
+	GlobalVariables.popularity += 15
+	GlobalVariables.climate += 15
+	GlobalVariables.treasury -= 15
+	# +3 Climate modifier - WOULD THIS WORK BETTER AS A ONE-OFF BONUS EVENT
+	
+func refuse_effect():	
+	GlobalVariables.popularity -= 10
+	GlobalVariables.treasury += 5
+	
+func weight() -> float:
+	# can read from globals to modify weight
+	return 0.6

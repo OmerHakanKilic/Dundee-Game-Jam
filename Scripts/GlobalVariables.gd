@@ -1,12 +1,12 @@
 extends Node
 
-var currentTreasury:int=0
-var currentPopularity:int=50
-var currentClimate:int=0
-var currentGlobalLeadership:int=0
+var treasury:int=30
+var popularity:int=40
+var climate:int=30
+var leadership:int=30
 
 var currentEventId:int=0
-var currentFlags=[]
+var flags : Dictionary={}
 
 #Settings
 

@@ -17,16 +17,15 @@ func condition() -> bool:
 func weight() -> float:
 	# can read from globals to modify weight
 	return 1.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
+	
+func approve_effect():
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func refuse_effect():
 	pass
+	
+func approve_prompt() -> String:
+	return "Approve"
 
-func constructor(ID:int):
-	print(" Constructed with id: "+str(ID))
-func desc() -> String:
-	return "Event 1 description"
+func refuse_prompt() -> String:
+	return "Deny"

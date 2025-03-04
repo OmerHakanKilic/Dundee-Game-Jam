@@ -4,6 +4,8 @@ var event_scene=preload("res://Scenes/event.tscn")
 
 var events = []
 
+var swipe_amount = 0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	prepare_events()
@@ -24,7 +26,9 @@ func prepare_events():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	var currentEvent = get_child(4)
+	currentEvent.position += Vector2(3.05,0.5) 
+	
 
 # This is a very basic demonstration of loading an event
 # I think we should review the implementation here
@@ -37,4 +41,3 @@ func getEvent():
 	eventimage.texture = events[0].image()
 	eventlabel.text = "test"
 	add_child(currentEvent)
-	currentEvent.constructor(GlobalVariables.currentEventId)
