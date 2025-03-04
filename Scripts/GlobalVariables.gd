@@ -13,6 +13,8 @@ var endgameStart = 20
 var currentEventId:int=0
 var flags : Dictionary={}
 
+var gameLost = false
+
 #Settings
 
 var volume:int=50
