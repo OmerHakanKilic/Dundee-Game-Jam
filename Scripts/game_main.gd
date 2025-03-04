@@ -7,6 +7,9 @@ var already_triggered = {}
 
 var swipe_offset = 0.0
 
+var current_event_scene
+var next_event_scene
+
 var current_event
 var next_event
 
@@ -36,25 +39,32 @@ func prepare_events():
 
 func begin_transition():
 	card_transitioning = true
-	
-	var new_event = sample_event()
-	setup_event(next_event, new_event)
-	already_triggered[new_event] = true
+	clamp_vars()
+	next_event = sample_event()
+	setup_event(next_event_scene, next_event)
+	already_triggered[next_event] = true
 	
 	pass
 
+func clamp_vars():
+	GlobalVariables.treasury = clamp(GlobalVariables.treasury,0,100)
+	GlobalVariables.popularity = clamp(GlobalVariables.popularity,0,100)
+	GlobalVariables.climate = clamp(GlobalVariables.climate,0,100)
+	GlobalVariables.leadership = clamp(GlobalVariables.leadership,0,100)
+
 func blank_next_event():
 	#next_event.get_child(0).texture = placeholder_image
-	next_event.get_child(1).text = ""
+	next_event_scene.get_child(1).text = ""
 
 func finish_transition():
 	card_transitioning = false
 	swipe_offset = 0.0
-	var temp = current_event
+	var temp = current_event_scene
+	current_event_scene = next_event_scene
+	next_event_scene = temp
+	next_event_scene.z_index = -2
+	current_event_scene.z_index = -1
 	current_event = next_event
-	next_event = temp
-	next_event.z_index = -2
-	current_event.z_index = -1
 	blank_next_event()
 
 var card_transitioning = false
@@ -75,9 +85,13 @@ func _process(delta):
 		# Display the action prompt
 	else:
 		if card_transitioning == false:
+			# swipe left
 			if swipe_offset > threshold:
+				current_event.refuse_effect()
 				begin_transition()
+			# swipe right
 			elif swipe_offset < -threshold:
+				current_event.approve_effect()
 				begin_transition()
 		
 		if card_transitioning == true:
@@ -94,7 +108,7 @@ func _process(delta):
 			else:
 				swipe_offset = max(0,swipe_offset-delta*600.0)
 	
-	current_event.position.x = swipe_offset
+	current_event_scene.position.x = swipe_offset
 	
 func setup_event(evt_scene, evt):
 	var eventimage = evt_scene.get_child(0)
@@ -107,18 +121,19 @@ func setup_event(evt_scene, evt):
 # This is a very basic demonstration of loading an event
 # I think we should review the implementation here
 func setup_event_scenes():
-	current_event=event_scene.instantiate()
-	next_event = event_scene.instantiate()
+	current_event_scene=event_scene.instantiate()
+	next_event_scene = event_scene.instantiate()
 	
-	current_event.z_index = -1
-	next_event.z_index = -2
+	current_event_scene.z_index = -1
+	next_event_scene.z_index = -2
 	
-	add_child(current_event)
-	add_child(next_event)
+	add_child(current_event_scene)
+	add_child(next_event_scene)
 	
-	setup_event(current_event, events[0])
+	current_event = events[0]
+	setup_event(current_event_scene, current_event)
 	already_triggered = {}
-	already_triggered[events[0]] = true
+	already_triggered[current_event] = true
 	#setup_event(current_event, events[1])
 
 func sample_event() -> Event:
