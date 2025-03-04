@@ -44,8 +44,10 @@ func reset():
 	GlobalVariables.climate = 30
 	GlobalVariables.leadership = 30
 	GlobalVariables.currentTurn = 0
+	GlobalVariables.flags = {}
+	GlobalVariables.shouldReset = false
 	current_event = events[0]
-	setup_event(current_event_scene, current_event)
+	current_event_scene.apply_event(current_event)
 	already_triggered = {}
 	already_triggered[current_event] = true
 
@@ -54,7 +56,7 @@ func begin_transition():
 	clamp_vars()
 	next_event = sample_event()
 	next_event.appear_effect()
-	setup_event(next_event_scene, next_event)
+	next_event_scene.apply_event(next_event)
 	already_triggered[next_event] = true
 	GlobalVariables.currentTurn += 1
 
@@ -80,6 +82,9 @@ func finish_transition():
 	current_event_scene.rotation = 0
 	next_event_scene.rotation = 0
 	blank_next_event()
+	if GlobalVariables.shouldReset == true:		
+		reset()
+		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 var card_transitioning = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -120,20 +125,10 @@ func _process(delta):
 			else:
 				swipe_offset = max(0,swipe_offset-delta*1500.0)
 	
+	current_event_scene.swipe_offset = swipe_offset
 	var rotate_amount = deg_to_rad(clamp(swipe_offset/100,-35.0,35.0))
-	current_event_scene.rotation = rotate_amount
-	current_event_scene.position.x = swipe_offset
-	
-func setup_event(evt_scene, evt):
-	var eventimage = evt_scene.get_child(0)
-	var eventlabel = evt_scene.get_child(1)
-	
-	eventimage.texture = evt.image()
-	eventlabel.text = evt.description()
-	
-	var scale = max(0.5,720.0 / evt.image().get_width())
-	eventimage.scale = Vector2(scale,scale)	
-	evt_scene.position = Vector2(0,0)
+	#current_event_scene.rotation = rotate_amount
+	#current_event_scene.position.x = swipe_offset
 
 # This is a very basic demonstration of loading an event
 # I think we should review the implementation here

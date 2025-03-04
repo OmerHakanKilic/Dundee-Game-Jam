@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1akjk1lv3phq"]
 
-[ext_resource type="Script" path="res://Scripts/event.gd" id="1_pr1kh"]
+[ext_resource type="Script" path="res://Scripts/event_card.gd" id="1_8qbi4"]
 
 [node name="Event" type="Node2D"]
-script = ExtResource("1_pr1kh")
+script = ExtResource("1_8qbi4")
 
 [node name="EventImage" type="Sprite2D" parent="."]
 

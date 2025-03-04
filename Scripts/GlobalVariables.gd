@@ -10,7 +10,8 @@ var currentTurn = 0
 var midgameStart = 10
 var endgameStart = 20
 
-var currentEventId:int=0
+var shouldReset = false
+
 var flags : Dictionary={}
 
 #Settings
