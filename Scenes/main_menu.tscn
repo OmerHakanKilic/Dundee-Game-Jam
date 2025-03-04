@@ -1,31 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://jm1ibwk1lxdw"]
+[gd_scene load_steps=3 format=3 uid="uid://jm1ibwk1lxdw"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_77npp"]
+[ext_resource type="Texture2D" uid="uid://cnypsbnq0al5k" path="res://Assets/Images/Icons/title_screen.png" id="2_s21mx"]
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_77npp")
 
-[node name="PlayButton" type="Button" parent="."]
-offset_left = 393.0
-offset_top = 67.0
-offset_right = 666.0
-offset_bottom = 261.0
-text = "Play"
-
-[node name="SettingsButton" type="Button" parent="."]
-offset_left = 399.0
-offset_top = 318.0
-offset_right = 666.0
-offset_bottom = 472.0
-text = "Settings"
-
-[node name="ExitButton" type="Button" parent="."]
-offset_left = 450.0
-offset_top = 517.0
-offset_right = 608.0
-offset_bottom = 637.0
-text = "Exit"
-
-[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(360.5, 450)
+scale = Vector2(0.671296, 0.46875)
+texture = ExtResource("2_s21mx")
