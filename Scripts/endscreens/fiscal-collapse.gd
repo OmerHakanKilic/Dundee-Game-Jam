@@ -14,10 +14,10 @@ func maximum_turn() -> int:
 
 # Set both to game lost for either swipe? 
 func approve_effect():
-	GlobalVariables.gameLost = true
+	GlobalVariables.shouldReset = true
 
 func refuse_effect():
-	GlobalVariables.gameLost = true
+	GlobalVariables.shouldReset = true
 
 func weight() -> float:
-	return 1.0
+	return -1.0

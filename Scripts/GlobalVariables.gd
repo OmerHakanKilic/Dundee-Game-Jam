@@ -7,8 +7,9 @@ var leadership:int=30
 
 var currentTurn = 0
 
-var midgameStart = 10
-var endgameStart = 20
+var midgameStart = 8
+var endgameStart = 16
+var gameLength = 24
 
 var shouldReset = false
 

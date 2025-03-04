@@ -48,10 +48,10 @@ func prepare_events():
 				file_name = dir.get_next()
 				
 func reset():
-	GlobalVariables.treasury = 30
+	GlobalVariables.treasury = 35
 	GlobalVariables.popularity = 40
-	GlobalVariables.climate = 30
-	GlobalVariables.leadership = 30
+	GlobalVariables.climate = 40
+	GlobalVariables.leadership = 50
 	GlobalVariables.currentTurn = 0
 	GlobalVariables.flags = {}
 	GlobalVariables.shouldReset = false
@@ -206,6 +206,18 @@ func setup_event_scenes():
 	#setup_event(current_event, events[1])
 
 func sample_event() -> Event:
+	if GlobalVariables.treasury <= 0:
+		return preload("res://Scripts/endscreens/fiscal-collapse.gd").new() as Event
+	if GlobalVariables.climate < 0:
+		return preload("res://Scripts/endscreens/environmental-disaster.gd").new() as Event
+	if GlobalVariables.popularity <= 0:
+		return preload("res://Scripts/endscreens/public-outcry.gd").new() as Event
+	if GlobalVariables.leadership <= 0:
+		return preload("res://Scripts/endscreens/diplomatic-isolation.gd").new() as Event
+		
+	if GlobalVariables.currentTurn >= GlobalVariables.gameLength:
+		return preload("res://Scripts/endscreens/survival.gd").new() as Event
+	
 	var sum_weights = 0
 	var turn = GlobalVariables.currentTurn
 	for evt in events:

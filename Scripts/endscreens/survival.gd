@@ -1,7 +1,7 @@
 extends Event
 
 func description() -> String:
-	return "BREAKING: WILDFIRE PR STUNT GONE WRONG - PM MISSING IN SCORCHED FOREST"
+	return "Somehow, you finish your premiership "
 	
 func image() -> CompressedTexture2D:
 	return load("res://Assets/Images/forest_fire.jpg")
