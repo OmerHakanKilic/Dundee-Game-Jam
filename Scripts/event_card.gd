@@ -1,4 +1,4 @@
-extends Node2D
+extends VBoxContainer
 
 var swipe_offset = 0
 
@@ -15,6 +15,6 @@ func apply_event(evt : Event):
 	eventlabel.text = evt.description()
 	
 	var scale = max(0.5,720.0 / evt.image().get_width())
-	eventimage.scale = Vector2(scale,scale)	
-	position = Vector2(0,0)
+	#eventimage.scale = Vector2(scale,scale)	
+	position = Vector2(0,0)#get_viewport().size / 2.0#Vector2(0,0)
 	swipe_offset = 0.0
