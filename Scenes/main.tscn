@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://rcw1d5eslvgy"]
+[gd_scene load_steps=10 format=3 uid="uid://rcw1d5eslvgy"]
 
 [ext_resource type="Script" path="res://Scripts/game_main.gd" id="1_cl4kc"]
-[ext_resource type="Texture2D" uid="uid://bk0fgmlnbxyx4" path="res://Assets/Images/icon.svg" id="2_4eopm"]
 [ext_resource type="Script" path="res://Scripts/swipe_detector.gd" id="2_r7q3x"]
-[ext_resource type="Script" path="res://Scripts/StatBarsController.gd" id="4_0atsj"]
-[ext_resource type="Script" path="res://Scripts/progress_bar_controller.gd" id="4_7uhvj"]
-[ext_resource type="Texture2D" uid="uid://c7nnoyp8v82et" path="res://Assets/Images/progress_bar.png" id="5_ilnui"]
-[ext_resource type="Texture2D" uid="uid://dsyvpdw1p3jyh" path="res://Assets/Images/gbp.png" id="6_5gv3u"]
-[ext_resource type="Texture2D" uid="uid://bidtolcnplb7e" path="res://Assets/Images/ballot.jpg" id="7_8a54y"]
-[ext_resource type="Texture2D" uid="uid://cfj2asqvn8dny" path="res://Assets/Images/climate_change_adaptation_icon.png" id="8_fn7ye"]
-[ext_resource type="Texture2D" uid="uid://c2sax2idugxdc" path="res://Assets/Images/globe_icon.png" id="9_ujauo"]
+[ext_resource type="Texture2D" uid="uid://c8f81y1slj13g" path="res://Assets/Images/Icons/TreasuryIcon.png" id="3_l8kx3"]
+[ext_resource type="Texture2D" uid="uid://ikxtmxj1rh68" path="res://Assets/Images/Icons/PopularityIcon.png" id="4_1rpyp"]
+[ext_resource type="Texture2D" uid="uid://csqg7okau1kmm" path="res://Assets/Images/Icons/GlobalLeadershipIcon.png" id="5_6qtwa"]
+[ext_resource type="Texture2D" uid="uid://8sw1ovy2jyv7" path="res://Assets/Images/Icons/ClimateIcon.png" id="6_7njjp"]
+[ext_resource type="Texture2D" uid="uid://dx575txfvnpy0" path="res://Assets/Images/Icons/Agree-icon(1).png" id="8_v7j74"]
+[ext_resource type="Texture2D" uid="uid://b6t48sw5a8jvo" path="res://Assets/Images/Icons/Reject-icon(1).png" id="9_dktkq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_36kve"]
+font_size = 40
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_cl4kc")
@@ -17,84 +18,55 @@ script = ExtResource("1_cl4kc")
 [node name="SwipeDetector" type="Node2D" parent="."]
 script = ExtResource("2_r7q3x")
 
-[node name="Inventory" type="VBoxContainer" parent="."]
-offset_left = 38.0
-offset_top = 1661.0
-offset_right = 78.0
-offset_bottom = 1701.0
-scale = Vector2(1.94028, 3.37215)
+[node name="MainContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_right = 1076.0
+offset_bottom = 1921.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Slot1" type="Sprite2D" parent="Inventory"]
-position = Vector2(67, 0)
-texture = ExtResource("2_4eopm")
-
-[node name="Slot2" type="Sprite2D" parent="Inventory"]
-position = Vector2(323, 0)
-texture = ExtResource("2_4eopm")
-
-[node name="Slot3" type="Sprite2D" parent="Inventory"]
-position = Vector2(451, 0)
-texture = ExtResource("2_4eopm")
-
-[node name="Slot4" type="Sprite2D" parent="Inventory"]
-position = Vector2(195, 0)
-texture = ExtResource("2_4eopm")
-
-[node name="StatBars" type="VBoxContainer" parent="."]
-offset_left = 1.0
-offset_right = 294.0
-offset_bottom = 120.0
-scale = Vector2(0.5, 0.5)
-script = ExtResource("4_0atsj")
-
-[node name="TreasuryProgressBar" type="TextureProgressBar" parent="StatBars"]
-custom_minimum_size = Vector2(512, 96)
+[node name="Date" type="Label" parent="MainContainer"]
 layout_mode = 2
-texture_progress = ExtResource("5_ilnui")
-script = ExtResource("4_7uhvj")
-metadata/_edit_use_anchors_ = true
-
-[node name="TreasurySprite2D" type="Sprite2D" parent="StatBars/TreasuryProgressBar"]
-position = Vector2(512, 48)
-texture = ExtResource("6_5gv3u")
-
-[node name="PopularityProgressBar" type="TextureProgressBar" parent="StatBars"]
-custom_minimum_size = Vector2(0, 96)
-layout_mode = 2
-texture_progress = ExtResource("5_ilnui")
-script = ExtResource("4_7uhvj")
-metadata/_edit_use_anchors_ = true
-
-[node name="PopularitySprite2D" type="Sprite2D" parent="StatBars/PopularityProgressBar"]
-position = Vector2(512, 48)
-texture = ExtResource("7_8a54y")
-
-[node name="ClimateProgressBar" type="TextureProgressBar" parent="StatBars"]
-custom_minimum_size = Vector2(0, 96)
-layout_mode = 2
-texture_progress = ExtResource("5_ilnui")
-script = ExtResource("4_7uhvj")
-metadata/_edit_use_anchors_ = true
-
-[node name="ClimateSprite2D" type="Sprite2D" parent="StatBars/ClimateProgressBar"]
-position = Vector2(512, 48)
-texture = ExtResource("8_fn7ye")
-
-[node name="GlobalLeadershipProgressBar" type="TextureProgressBar" parent="StatBars"]
-custom_minimum_size = Vector2(0, 96)
-layout_mode = 2
-texture_progress = ExtResource("5_ilnui")
-script = ExtResource("4_7uhvj")
-metadata/_edit_use_anchors_ = true
-
-[node name="GlobalLeadershipSprite2D" type="Sprite2D" parent="StatBars/GlobalLeadershipProgressBar"]
-position = Vector2(512, 52)
-texture = ExtResource("9_ujauo")
-
-[node name="Date" type="Label" parent="."]
-offset_left = 569.0
-offset_top = 10.0
-offset_right = 651.0
-offset_bottom = 33.0
-scale = Vector2(5.94733, 15.3642)
 text = "11.03.2025"
+label_settings = SubResource("LabelSettings_36kve")
+
+[node name="TopBar" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+
+[node name="ClimateIcon" type="TextureRect" parent="MainContainer/TopBar"]
+layout_mode = 2
+texture = ExtResource("6_7njjp")
+
+[node name="GlobalLeadershipIcon" type="TextureRect" parent="MainContainer/TopBar"]
+layout_mode = 2
+texture = ExtResource("5_6qtwa")
+
+[node name="TreasuryIcon" type="TextureRect" parent="MainContainer/TopBar"]
+layout_mode = 2
+texture = ExtResource("3_l8kx3")
+
+[node name="PopularityIcon" type="TextureRect" parent="MainContainer/TopBar"]
+layout_mode = 2
+texture = ExtResource("4_1rpyp")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+
+[node name="BottomBar" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="AgreeButton" type="TextureButton" parent="MainContainer/BottomBar"]
+layout_mode = 2
+texture_normal = ExtResource("8_v7j74")
+
+[node name="DisagreeButton" type="TextureButton" parent="MainContainer/BottomBar"]
+layout_mode = 2
+texture_normal = ExtResource("9_dktkq")

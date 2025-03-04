@@ -17,6 +17,7 @@ func approve_effect():
 	GlobalVariables.climate += 15
 	GlobalVariables.treasury -= 5
 	GlobalVariables.popularity -= 10
+	GlobalVariables.flags["ICE_ban"] = true
 	
 func refuse_effect():
 	pass

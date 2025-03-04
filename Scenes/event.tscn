@@ -1,11 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1akjk1lv3phq"]
+[gd_scene load_steps=4 format=3 uid="uid://d1akjk1lv3phq"]
 
 [ext_resource type="Script" path="res://Scripts/event_card.gd" id="1_8qbi4"]
+[ext_resource type="Texture2D" uid="uid://nskpag6mr5kr" path="res://Assets/Images/new-train-line-investment.png" id="2_v7wi7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7y8oa"]
+font_size = 40
 
 [node name="Event" type="Node2D"]
 script = ExtResource("1_8qbi4")
 
 [node name="EventImage" type="Sprite2D" parent="."]
+texture = ExtResource("2_v7wi7")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 14
@@ -19,5 +24,6 @@ offset_bottom = 896.0
 grow_horizontal = 2
 grow_vertical = 2
 text = " Lorem ipsum dolor sit a  Lorem ipsum dolor sit a Lorem ipsum dolor sit a"
+label_settings = SubResource("LabelSettings_7y8oa")
 horizontal_alignment = 1
 autowrap_mode = 2
